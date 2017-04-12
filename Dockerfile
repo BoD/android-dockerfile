@@ -12,6 +12,8 @@ RUN echo y | android-sdk/tools/bin/sdkmanager 'platforms;android-25'
 RUN echo y | android-sdk/tools/bin/sdkmanager 'extras;android;m2repository'
 RUN echo y | android-sdk/tools/bin/sdkmanager 'extras;google;google_play_services'
 RUN echo y | android-sdk/tools/bin/sdkmanager 'extras;google;m2repository'
+RUN echo y | android-sdk/tools/bin/sdkmanager 'extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2'
+RUN echo y | android-sdk/tools/bin/sdkmanager 'extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2'
 
 
 ENV ANDROID_HOME=/android-sdk
