@@ -15,7 +15,7 @@ RUN echo y | android-sdk/tools/bin/sdkmanager 'platforms;android-28' > /dev/null
 
 # Android home environment variable
 ENV ANDROID_HOME=~/android-sdk
-run echo 'export ANDROID_HOME=~/android-sdk' >> .bashrc
+RUN echo 'export ANDROID_HOME=~/android-sdk' >> .bashrc
 
 # Install and setup ssh server (uncomment if for some reason you need this)
 # RUN apt-get update && \
