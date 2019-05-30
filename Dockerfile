@@ -8,7 +8,6 @@ RUN unzip -qq android-sdk-tools.zip -d android-sdk
 RUN rm android-sdk-tools.zip
 
 # Install Android components
-RUN echo y | android-sdk/tools/bin/sdkmanager 'tools' > /dev/null
 RUN echo y | android-sdk/tools/bin/sdkmanager 'platform-tools' > /dev/null
 RUN echo y | android-sdk/tools/bin/sdkmanager 'build-tools;28.0.3' > /dev/null
 RUN echo y | android-sdk/tools/bin/sdkmanager 'platforms;android-28' > /dev/null
