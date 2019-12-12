@@ -9,8 +9,9 @@ RUN rm android-sdk-tools.zip
 
 # Install Android components
 RUN echo y | android-sdk/tools/bin/sdkmanager 'platform-tools' > /dev/null
-RUN echo y | android-sdk/tools/bin/sdkmanager 'build-tools;28.0.3' > /dev/null
-RUN echo y | android-sdk/tools/bin/sdkmanager 'platforms;android-28' > /dev/null
+# Latest version of build-tools available here: https://developer.android.com/studio/releases/build-tools.html
+RUN echo y | android-sdk/tools/bin/sdkmanager 'build-tools;29.0.2' > /dev/null
+RUN echo y | android-sdk/tools/bin/sdkmanager 'platforms;android-29' > /dev/null
 
 # Android home environment variable
 ENV ANDROID_HOME=~/android-sdk
