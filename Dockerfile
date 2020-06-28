@@ -7,7 +7,7 @@ WORKDIR /home/android
 
 RUN mkdir android-sdk
 
-# Download and unzip the Android SDK tools
+# Download and unzip the Android command line tools
 # Latest version of this file available here: https://developer.android.com/studio/#command-tools
 RUN curl --progress-bar --location https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip > cmdline-tools.zip
 RUN unzip -qq cmdline-tools.zip -d cmdline-tools
