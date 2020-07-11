@@ -16,7 +16,7 @@ RUN echo y | cmdline-tools/tools/bin/sdkmanager --sdk_root=android-sdk 'platform
 # Cleanup
 RUN rm -rf cmdline-tools.zip cmdline-tools
 
-# Android and Java home environment variable
+# Setup Android and Java home environment variable
 ENV ANDROID_HOME=/android-sdk
 RUN echo 'export ANDROID_HOME=/android-sdk' >> ~/.bashrc
 RUN echo 'export JAVA_HOME=/usr/local/openjdk-8' >> ~/.bashrc
