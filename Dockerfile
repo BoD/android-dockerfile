@@ -1,10 +1,5 @@
 FROM openjdk:8
 
-# Create and use the 'android' user
-RUN useradd --create-home --shell /bin/bash --groups root,staff android
-USER android
-WORKDIR /home/android
-
 RUN mkdir android-sdk
 
 # Download and unzip the Android command line tools
@@ -21,16 +16,20 @@ RUN echo y | cmdline-tools/tools/bin/sdkmanager --sdk_root=android-sdk 'platform
 # Cleanup
 RUN rm -rf cmdline-tools.zip cmdline-tools
 
-# Android home environment variable
-ENV ANDROID_HOME=/home/android/android-sdk
-RUN echo 'export ANDROID_HOME=/home/android/android-sdk' >> .bashrc
+# Android and Java home environment variable
+ENV ANDROID_HOME=/android-sdk
+RUN echo 'export ANDROID_HOME=/android-sdk' >> ~/.bashrc
+RUN echo 'export JAVA_HOME=/usr/local/openjdk-8' >> ~/.bashrc
 
 # Install and setup ssh server (uncomment if for some reason you need this)
-# RUN apt-get update && \
-#   apt-get install -y openssh-server rsync && \
-#   mkdir /var/run/sshd && \
-#   echo 'root:root' | chpasswd && \
-#   sed -ri 's/^#PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-#   sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
-# EXPOSE 22
-# CMD ["/usr/sbin/sshd", "-D"]
+# To login without a password, run this command on the host:
+#     ssh-copy-id -i ~/.ssh/id_rsa.pub -p 2222 root@localhost
+# (the root password is 'root')
+#RUN apt-get update && \
+#    apt-get install -y openssh-server rsync && \
+#    mkdir /var/run/sshd && \
+#    echo 'root:root' | chpasswd && \
+#    sed -ri 's/^#PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+#    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+#EXPOSE 22
+#CMD ["/usr/sbin/sshd", "-D"]
