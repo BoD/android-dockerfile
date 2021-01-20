@@ -5,13 +5,13 @@ RUN mkdir android-sdk
 # Download and unzip the Android command line tools
 # Latest version of this file available here: https://developer.android.com/studio/#command-tools
 RUN curl --progress-bar --location https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip > cmdline-tools.zip
-RUN unzip -qq cmdline-tools.zip -d cmdline-tools
+RUN unzip -qq cmdline-tools.zip
 
 # Install Android components
-RUN echo y | cmdline-tools/tools/bin/sdkmanager --sdk_root=android-sdk 'platform-tools' > /dev/null
+RUN echo y | cmdline-tools/bin/sdkmanager --sdk_root=android-sdk 'platform-tools' > /dev/null
 # Latest version of build-tools available here: https://developer.android.com/studio/releases/build-tools.html
-RUN echo y | cmdline-tools/tools/bin/sdkmanager --sdk_root=android-sdk 'build-tools;29.0.3' > /dev/null
-RUN echo y | cmdline-tools/tools/bin/sdkmanager --sdk_root=android-sdk 'platforms;android-30' > /dev/null
+RUN echo y | cmdline-tools/bin/sdkmanager --sdk_root=android-sdk 'build-tools;29.0.3' > /dev/null
+RUN echo y | cmdline-tools/bin/sdkmanager --sdk_root=android-sdk 'platforms;android-30' > /dev/null
 
 # Cleanup
 RUN rm -rf cmdline-tools.zip cmdline-tools
