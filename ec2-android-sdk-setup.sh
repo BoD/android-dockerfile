@@ -21,6 +21,8 @@ echo y | cmdline-tools/bin/sdkmanager --sdk_root=android-sdk 'platforms;android-
 # Cleanup
 rm -rf cmdline-tools.zip cmdline-tools
 
-# Setup Android home environment variable
+# Setup Android home environment variable (note: needs to be on top of .bashrc)
 export ANDROID_HOME=~/android-sdk
-echo 'export ANDROID_HOME=~/android-sdk' >> ~/.bashrc
+mv .bashrc .bashrc_original
+echo -e "export ANDROID_HOME=~/android-sdk\n" > .bashrc
+cat .bashrc_original >> .bashrc && rm .bashrc_original
